@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ron Ebken | Cybersecurity Portfolio</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Custom styles to match the React version's selection color */
+        ::selection {
+            background-color: rgba(6, 182, 212, 0.3);
+        }
+        
+        /* Utility class to keep active nav links highlighted */
+        .nav-active {
+            color: #22d3ee !important; /* cyan-400 */
+        }
+    </style>
+</head>
+<body class="bg-slate-950 text-slate-300 font-sans min-h-screen">
+
+    <div id="app"></div>
+
+    <script>
+        // --- DATA & TRANSLATIONS ---
+        const translations = {
+            en: {
+                nav: ['Home', 'About', 'Experience', 'Skills', 'Education'],
+                heroBadge: 'Targeting Cyber Security Opportunities',
+                heroHi: "Hi, I'm",
+                heroDesc1: "Cybersecurity Specialist",
+                heroDesc2: " bridging the gap between robust IT security operations, code-level technical expertise, and strategic business goals.",
+                btnTouch: "Get in Touch",
+                btnLi: "Connect on LinkedIn",
+                location: "Westerstede, Germany",
+                aboutTitle: "About Me",
+                aboutP1: "I am a dedicated cybersecurity professional with a unique advantage: a deep understanding of how software is built and how businesses operate. Currently pursuing my M.Sc. in Cyber Security Management, my career spans IT security operations, software engineering, and business development.",
+                aboutP2: "This multi-disciplinary background enables me to approach security not just as a technical necessity, but as a strategic enabler. Having assessed critical security warnings at the Federal IT Center (ITZBund) and contributed to complex software architectures for major health insurers, I know how to implement robust, practical security measures that align with fast-paced business objectives.",
+                hobbies: ['Travel', 'Gaming', 'Festivals', 'Event Coordination', 'Tabletop Games'],
+                expTitle: "Professional Experience",
+                jobs: [
+                    {
+                        title: "Master@IBM Business Development",
+                        date: "Sep 2024 - Present",
+                        company: "IBM Technology Lifecycle Services, Hamburg",
+                        desc: "Provide essential support to the sales team with key operational tasks. Actively involved in strategic business development activities, conducting market analysis to identify new opportunities, and generating qualified leads to expand the client base."
+                    },
+                    {
+                        title: "Information Security Analyst",
+                        date: "Aug 2023 - Sep 2024",
+                        company: "ITZBund (Federal IT Center), Hannover",
+                        desc: "Worked in Information and Incident Management. Assessed security warnings relevance and monitored implementation of security measures. Exchanged information with clients/supervisory authorities, participated in vulnerability management committees, and optimized internal documentation."
+                    },
+                    {
+                        title: "Full-stack Developer",
+                        date: "Mar 2020 - Dec 2022",
+                        company: "T-Systems Multimedia Solutions (Deutsche Telekom AG), Hamburg",
+                        desc: "Responsible for the end-to-end software development of web applications for a major health insurance company. Scope covered the entire lifecycle: initial planning, architecture modeling, implementation, development, and testing."
+                    },
+                    {
+                        title: "Operations Controller",
+                        date: "Sep 2019 - Feb 2020",
+                        company: "Deutsche Telekom AG, Hamburg",
+                        desc: "Coordinated technician deployments within Operations Control for Technical Infrastructure. Monitored and calculated key performance indicators (KPIs) to ensure operational efficiency and service quality."
+                    }
+                ],
+                skillsTitle: "Core Competencies",
+                secTitle: "IT Security",
+                secSkills: ["Security Operations", "Incident Management", "Vulnerability Mgmt.", "Threat Analysis", "Compliance Monitoring"],
+                devTitle: "Development",
+                devSkills: ["Full-Stack Development", "Web Applications", "Software Architecture", "Secure Coding Practices", "Agile Lifecycles"],
+                bizTitle: "Business & Ops",
+                bizSkills: ["Business Development", "Sales Operations", "Market Analysis", "KPI Monitoring", "Lead Generation"],
+                langTitle: "Languages",
+                langs: [
+                    { name: "German", level: "Native" },
+                    { name: "English", level: "C2" },
+                    { name: "Spanish", level: "Basic" },
+                    { name: "Japanese", level: "Basic" }
+                ],
+                eduTitle: "Education & Certs",
+                edu1Date: "Sep 2024 - Present",
+                edu1Title: "M.Sc. Cyber Security Management",
+                edu1Org: "FOM University for Applied Sciences, Hamburg",
+                edu2Date: "Sep 2019 - Dec 2022",
+                edu2Title: "B.Sc. Business Information Systems",
+                edu2Org: "FOM University for Applied Sciences, Hamburg",
+                cert1Title: "Fundamentals of Cybersecurity",
+                cert2Title: "English Certification C2",
+                globalTitle: "Global Perspective",
+                globalQuote: '"I believe diverse cultural experiences are fundamental to thriving in global business development and technology."',
+                glob1Date: "Jan 2023 - Sep 2024",
+                glob1Title: "Southeast Asia Expedition",
+                glob1Desc: "Post-Bachelor's travel immersing in diverse cultures and broadening global perspectives.",
+                glob2Date: "Oct 2018 - Apr 2019",
+                glob2Title: "Oceania Gap Year",
+                glob2Desc: "Independent travel across New Zealand & Australia developing adaptability and independence.",
+                contactTitle: "Ready to Connect?",
+                profileLi: "LinkedIn Profile",
+                rights: "All rights reserved."
+            },
+            de: {
+                nav: ['Start', 'Über mich', 'Erfahrung', 'Fähigkeiten', 'Bildung'],
+                heroBadge: 'Zielgerichtete Suche nach Cyber Security Positionen',
+                heroHi: "Hallo, ich bin",
+                heroDesc1: "Cybersecurity-Spezialist",
+                heroDesc2: ", der die Brücke zwischen IT-Sicherheitsbetrieb, tiefgreifender technischer Expertise und strategischen Unternehmenszielen schlägt.",
+                btnTouch: "Kontakt aufnehmen",
+                btnLi: "Auf LinkedIn vernetzen",
+                location: "Westerstede, Deutschland",
+                aboutTitle: "Über mich",
+                aboutP1: "Ich bin ein engagierter Cybersecurity-Experte mit einem einzigartigen Vorteil: einem tiefen Verständnis dafür, wie Software entwickelt wird und wie Unternehmen funktionieren. Aktuell absolviere ich meinen M.Sc. in Cyber Security Management. Mein Werdegang umfasst IT-Security Operations, Software Engineering und Business Development.",
+                aboutP2: "Dieser multidisziplinäre Hintergrund ermöglicht es mir, Sicherheit nicht nur als technische Notwendigkeit, sondern als strategischen Wegbereiter zu betrachten. Nachdem ich kritische Sicherheitswarnungen beim ITZBund bewertet und an komplexen Softwarearchitekturen für große Krankenversicherungen mitgewirkt habe, weiß ich, wie man robuste und praxisnahe Sicherheitsmaßnahmen implementiert, die dynamische Unternehmensziele unterstützen.",
+                hobbies: ['Reisen', 'Gaming', 'Festivals', 'Eventkoordination', 'Tabletop-Spiele'],
+                expTitle: "Berufserfahrung",
+                jobs: [
+                    {
+                        title: "Master@IBM Business Development",
+                        date: "Sep 2024 - Heute",
+                        company: "IBM Technology Lifecycle Services, Hamburg",
+                        desc: "Unterstützung des Vertriebsteams bei wichtigen operativen Aufgaben. Aktive Beteiligung an strategischen Business-Development-Aktivitäten, Durchführung von Marktanalysen zur Identifizierung neuer Geschäftsmöglichkeiten und Generierung qualifizierter Leads zum Ausbau des Kundenstamms."
+                    },
+                    {
+                        title: "Information Security Analyst",
+                        date: "Aug 2023 - Sep 2024",
+                        company: "ITZBund (Informationstechnikzentrum Bund), Hannover",
+                        desc: "Tätig im Informations- und Vorfallmanagement. Bewertung der Relevanz von Sicherheitswarnungen und Überwachung der Umsetzung von Sicherheitsmaßnahmen. Informationsaustausch mit Kunden und Aufsichtsbehörden, Teilnahme an Gremien zum Schwachstellenmanagement und Optimierung der internen Dokumentation."
+                    },
+                    {
+                        title: "Full-stack Developer",
+                        date: "Mär 2020 - Dez 2022",
+                        company: "T-Systems Multimedia Solutions (Deutsche Telekom AG), Hamburg",
+                        desc: "Verantwortlich für die End-to-End-Softwareentwicklung von Webanwendungen für eine große Krankenkasse. Der Aufgabenbereich umfasste den gesamten Entwicklungszyklus: von der initialen Planung und Architekturmodellierung bis hin zu Implementierung, Entwicklung und Testing."
+                    },
+                    {
+                        title: "Operations Controller",
+                        date: "Sep 2019 - Feb 2020",
+                        company: "Deutsche Telekom AG, Hamburg",
+                        desc: "Koordination von Technikereinsätzen innerhalb der Betriebssteuerung für die Technische Infrastruktur. Überwachung und Berechnung von Key Performance Indicators (KPIs) zur Sicherstellung der operativen Effizienz und Servicequalität."
+                    }
+                ],
+                skillsTitle: "Kernkompetenzen",
+                secTitle: "IT-Sicherheit",
+                secSkills: ["Security Operations", "Incident Management", "Schwachstellenmanagement", "Bedrohungsanalyse", "Compliance-Überwachung"],
+                devTitle: "Entwicklung",
+                devSkills: ["Full-Stack-Entwicklung", "Webanwendungen", "Softwarearchitektur", "Secure Coding", "Agile Methoden"],
+                bizTitle: "Business & Ops",
+                bizSkills: ["Business Development", "Sales Operations", "Marktanalysen", "KPI-Überwachung", "Lead-Generierung"],
+                langTitle: "Sprachen",
+                langs: [
+                    { name: "Deutsch", level: "Muttersprache" },
+                    { name: "Englisch", level: "C2" },
+                    { name: "Spanisch", level: "Grundkenntnisse" },
+                    { name: "Japanisch", level: "Grundkenntnisse" }
+                ],
+                eduTitle: "Bildung & Zertifikate",
+                edu1Date: "Sep 2024 - Heute",
+                edu1Title: "M.Sc. Cyber Security Management",
+                edu1Org: "FOM Hochschule, Hamburg",
+                edu2Date: "Sep 2019 - Dez 2022",
+                edu2Title: "B.Sc. Wirtschaftsinformatik",
+                edu2Org: "FOM Hochschule, Hamburg",
+                cert1Title: "Grundlagen der Cybersecurity",
+                cert2Title: "Englisch-Zertifikat C2",
+                globalTitle: "Globale Perspektive",
+                globalQuote: '"Ich bin davon überzeugt, dass vielfältige kulturelle Erfahrungen eine essenzielle Grundlage für den Erfolg in der globalen Technologie- und Geschäftsentwicklung sind."',
+                glob1Date: "Jan 2023 - Sep 2024",
+                glob1Title: "Südostasien Expedition",
+                glob1Desc: "Reisen nach dem Bachelorabschluss, um in diverse Kulturen einzutauchen und globale Perspektiven zu erweitern.",
+                glob2Date: "Okt 2018 - Apr 2019",
+                glob2Title: "Ozeanien Gap Year",
+                glob2Desc: "Unabhängiges Reisen durch Neuseeland und Australien zur Förderung von Anpassungsfähigkeit und Eigenständigkeit.",
+                contactTitle: "Bereit zur Vernetzung?",
+                profileLi: "LinkedIn Profil",
+                rights: "Alle Rechte vorbehalten."
+            }
+        };
+
+        const sectionIds = ['home', 'about', 'experience', 'skills', 'education'];
+        let currentLang = 'en';
+
+        // --- GLOBAL FUNCTIONS ---
+        function toggleLang() {
+            currentLang = currentLang === 'en' ? 'de' : 'en';
+            renderApp();
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function updateScrollSpy() {
+            const scrollPosition = window.scrollY + 100;
+            let currentActive = 'home';
+
+            for (const section of sectionIds) {
+                const element = document.getElementById(section);
+                if (element && scrollPosition >= element.offsetTop && scrollPosition < element.offsetTop + element.offsetHeight) {
+                    currentActive = section;
+                }
+            }
+
+            // Update nav classes
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.getAttribute('data-section') === currentActive) {
+                    btn.classList.add('nav-active');
+                    btn.classList.remove('text-slate-400');
+                } else {
+                    btn.classList.remove('nav-active');
+                    btn.classList.add('text-slate-400');
+                }
+            });
+        }
+
+        // Add scroll listener
+        window.addEventListener('scroll', updateScrollSpy);
+
+        // --- RENDER FUNCTION ---
+        function renderApp() {
+            const t = translations[currentLang];
+            const app = document.getElementById('app');
+
+            app.innerHTML = `
+                <nav class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+                    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                        <div class="flex items-center justify-between h-16">
+                            <div class="flex-shrink-0 font-bold text-xl tracking-tighter text-white flex items-center gap-2">
+                                <i data-lucide="terminal" class="w-5 h-5 text-cyan-400"></i>
+                                <span>R<span class="text-cyan-400">.</span>Ebken</span>
+                            </div>
+
+                            <div class="hidden md:flex items-center space-x-8">
+                                ${t.nav.map((item, index) => `
+                                    <button onclick="scrollToSection('${sectionIds[index]}')" data-section="${sectionIds[index]}" class="nav-btn text-slate-400 hover:text-white transition-colors px-3 py-2 rounded-md text-sm font-medium">
+                                        ${item}
+                                    </button>
+                                `).join('')}
+                            </div>
+
+                            <div class="flex items-center">
+                                <button onclick="toggleLang()" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700 hover:border-cyan-500 hover:text-cyan-400 text-sm text-slate-300 transition-all" title="Toggle Language">
+                                    <i data-lucide="globe" class="w-4 h-4"></i>
+                                    <span class="font-medium">${currentLang === 'en' ? 'DE' : 'EN'}</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </nav>
+
+                <main class="pt-16">
+                    <section id="home" class="min-h-[90vh] flex items-center relative overflow-hidden">
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+                        
+                        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-20">
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-cyan-400 text-sm font-medium mb-6">
+                                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                                ${t.heroBadge}
+                            </div>
+                            
+                            <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
+                                ${t.heroHi} <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Ron Ebken</span>
+                            </h1>
+                            
+                            <p class="text-xl md:text-3xl font-light text-slate-400 mb-8 max-w-3xl leading-relaxed">
+                                <span class="text-white font-medium">${t.heroDesc1}</span>${t.heroDesc2}
+                            </p>
+
+                            <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                                <button onclick="scrollToSection('contact')" class="px-8 py-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2">
+                                    ${t.btnTouch} <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                                </button>
+                                <a href="https://www.linkedin.com/in/ron-ebken-18772423b/" target="_blank" rel="noopener noreferrer" class="px-8 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-medium transition-colors border border-slate-700 flex items-center justify-center gap-2">
+                                    <i data-lucide="linkedin" class="w-5 h-5"></i> ${t.btnLi}
+                                </a>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row gap-6 text-sm text-slate-400">
+                                <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-cyan-500"></i> ${t.location}</div>
+                                <div class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-cyan-500"></i> ron.ebken@proton.me</div>
+                                <div class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-cyan-500"></i> +49 173 510 5665</div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="about" class="py-20 bg-slate-900/50 border-y border-slate-800/50">
+                        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="grid md:grid-cols-2 gap-12 items-center">
+                                <div>
+                                    <h2 class="text-3xl font-bold text-white mb-6 flex items-center gap-2">
+                                        <i data-lucide="user" class="w-6 h-6 text-cyan-400"></i> ${t.aboutTitle}
+                                    </h2>
+                                    <p class="text-slate-300 leading-relaxed mb-6">${t.aboutP1}</p>
+                                    <p class="text-slate-300 leading-relaxed mb-6">${t.aboutP2}</p>
+                                    <div class="flex flex-wrap gap-2 mt-8">
+                                        ${t.hobbies.map(hobby => `<span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-300 border border-slate-700">${hobby}</span>`).join('')}
+                                    </div>
+                                </div>
+                                <div class="relative hidden md:block">
+                                    <div class="relative rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.3)] border border-slate-700 group">
+                                        <div class="absolute inset-0 bg-cyan-900/20 mix-blend-overlay group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
+                                        
+                                        <img src="ron_ebken.jpg" alt="Ron Ebken" class="w-full h-auto object-cover aspect-[4/5] object-top group-hover:scale-105 transition-transform duration-700 ease-in-out" />
+                                        
+                                        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-slate-900 to-transparent z-10 pointer-events-none"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="experience" class="py-20">
+                        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-2">
+                                <i data-lucide="briefcase" class="w-6 h-6 text-cyan-400"></i> ${t.expTitle}
+                            </h2>
+
+                            <div class="relative border-l border-slate-700 ml-3 md:ml-4">
+                                
+                                <div class="mb-12 ml-8 relative group">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-slate-900 rounded-full -left-12 ring-4 ring-slate-950 border border-cyan-500/30 group-hover:border-cyan-400 transition-colors">
+                                        <i data-lucide="line-chart" class="w-4 h-4 text-cyan-400"></i>
+                                    </span>
+                                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                                        <h3 class="text-xl font-bold text-white">${t.jobs[0].title}</h3>
+                                        <span class="text-sm font-mono text-cyan-400 flex items-center gap-1">
+                                            <i data-lucide="calendar" class="w-4 h-4"></i> ${t.jobs[0].date}
+                                        </span>
+                                    </div>
+                                    <h4 class="text-lg text-slate-400 mb-4 font-medium">${t.jobs[0].company}</h4>
+                                    <p class="text-slate-300 leading-relaxed">${t.jobs[0].desc}</p>
+                                </div>
+
+                                <div class="mb-12 ml-8 relative group">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-slate-900 rounded-full -left-12 ring-4 ring-slate-950 border border-slate-600 group-hover:border-cyan-400 transition-colors">
+                                        <i data-lucide="shield" class="w-4 h-4 text-slate-400 group-hover:text-cyan-400"></i>
+                                    </span>
+                                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                                        <h3 class="text-xl font-bold text-white">${t.jobs[1].title}</h3>
+                                        <span class="text-sm font-mono text-slate-400 flex items-center gap-1">
+                                            <i data-lucide="calendar" class="w-4 h-4"></i> ${t.jobs[1].date}
+                                        </span>
+                                    </div>
+                                    <h4 class="text-lg text-slate-400 mb-4 font-medium">${t.jobs[1].company}</h4>
+                                    <p class="text-slate-300 leading-relaxed">${t.jobs[1].desc}</p>
+                                </div>
+
+                                <div class="mb-12 ml-8 relative group">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-slate-900 rounded-full -left-12 ring-4 ring-slate-950 border border-slate-600 group-hover:border-cyan-400 transition-colors">
+                                        <i data-lucide="code" class="w-4 h-4 text-slate-400 group-hover:text-cyan-400"></i>
+                                    </span>
+                                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                                        <h3 class="text-xl font-bold text-white">${t.jobs[2].title}</h3>
+                                        <span class="text-sm font-mono text-slate-400 flex items-center gap-1">
+                                            <i data-lucide="calendar" class="w-4 h-4"></i> ${t.jobs[2].date}
+                                        </span>
+                                    </div>
+                                    <h4 class="text-lg text-slate-400 mb-4 font-medium">${t.jobs[2].company}</h4>
+                                    <p class="text-slate-300 leading-relaxed">${t.jobs[2].desc}</p>
+                                </div>
+
+                                <div class="ml-8 relative group">
+                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-slate-900 rounded-full -left-12 ring-4 ring-slate-950 border border-slate-600 group-hover:border-cyan-400 transition-colors">
+                                        <i data-lucide="terminal" class="w-4 h-4 text-slate-400 group-hover:text-cyan-400"></i>
+                                    </span>
+                                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
+                                        <h3 class="text-xl font-bold text-white">${t.jobs[3].title}</h3>
+                                        <span class="text-sm font-mono text-slate-400 flex items-center gap-1">
+                                            <i data-lucide="calendar" class="w-4 h-4"></i> ${t.jobs[3].date}
+                                        </span>
+                                    </div>
+                                    <h4 class="text-lg text-slate-400 mb-4 font-medium">${t.jobs[3].company}</h4>
+                                    <p class="text-slate-300 leading-relaxed">${t.jobs[3].desc}</p>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="skills" class="py-20 bg-slate-900/50 border-y border-slate-800/50">
+                        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <h2 class="text-3xl font-bold text-white mb-12 text-center">${t.skillsTitle}</h2>
+                            
+                            <div class="grid md:grid-cols-3 gap-8">
+                                <div class="bg-slate-900 border border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.15)] rounded-xl p-6 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all group relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                        <i data-lucide="shield" class="w-24 h-24 text-cyan-400"></i>
+                                    </div>
+                                    <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative z-10">
+                                        <i data-lucide="shield" class="w-6 h-6 text-cyan-400"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white mb-4 relative z-10">${t.secTitle}</h3>
+                                    <ul class="space-y-3 relative z-10">
+                                        ${t.secSkills.map(skill => `<li class="flex items-center text-slate-200 font-medium"><i data-lucide="chevron-right" class="w-4 h-4 text-cyan-500 mr-2"></i> ${skill}</li>`).join('')}
+                                    </ul>
+                                </div>
+
+                                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-teal-500/50 transition-colors group">
+                                    <div class="w-12 h-12 bg-teal-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="code" class="w-6 h-6 text-teal-400"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white mb-4">${t.devTitle}</h3>
+                                    <ul class="space-y-3">
+                                        ${t.devSkills.map(skill => `<li class="flex items-center text-slate-300"><i data-lucide="chevron-right" class="w-4 h-4 text-teal-500 mr-2"></i> ${skill}</li>`).join('')}
+                                    </ul>
+                                </div>
+
+                                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-blue-500/50 transition-colors group">
+                                    <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="line-chart" class="w-6 h-6 text-blue-400"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white mb-4">${t.bizTitle}</h3>
+                                    <ul class="space-y-3">
+                                        ${t.bizSkills.map(skill => `<li class="flex items-center text-slate-300"><i data-lucide="chevron-right" class="w-4 h-4 text-blue-500 mr-2"></i> ${skill}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mt-12 text-center">
+                                <h3 class="text-xl font-bold text-white mb-6">${t.langTitle}</h3>
+                                <div class="flex flex-wrap justify-center gap-4">
+                                    ${t.langs.map(l => `<span class="px-6 py-2 bg-slate-800 rounded-full border border-slate-700 text-white font-medium">${l.name} <span class="text-cyan-500 ml-2">${l.level}</span></span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="education" class="py-20">
+                        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="grid md:grid-cols-2 gap-12">
+                                
+                                <div>
+                                    <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-2">
+                                        <i data-lucide="graduation-cap" class="w-6 h-6 text-cyan-400"></i> ${t.eduTitle}
+                                    </h2>
+                                    <div class="space-y-6">
+                                        <div class="bg-slate-900 border border-slate-800 p-6 rounded-xl">
+                                            <div class="text-sm text-cyan-400 mb-1">${t.edu1Date}</div>
+                                            <h3 class="text-lg font-bold text-white">${t.edu1Title}</h3>
+                                            <p class="text-slate-400">${t.edu1Org}</p>
+                                        </div>
+                                        <div class="bg-slate-900 border border-slate-800 p-6 rounded-xl">
+                                            <div class="text-sm text-slate-400 mb-1">${t.edu2Date}</div>
+                                            <h3 class="text-lg font-bold text-white">${t.edu2Title}</h3>
+                                            <p class="text-slate-400">${t.edu2Org}</p>
+                                        </div>
+                                        
+                                        <div class="grid grid-cols-2 gap-4 mt-6">
+                                            <div class="bg-slate-800/50 border border-slate-700 p-4 rounded-xl text-center">
+                                                <div class="text-xs text-slate-400 mb-1">Apr 2025</div>
+                                                <div class="font-medium text-white text-sm">${t.cert1Title}</div>
+                                                <div class="text-xs text-cyan-400">Codecademy</div>
+                                            </div>
+                                            <div class="bg-slate-800/50 border border-slate-700 p-4 rounded-xl text-center">
+                                                <div class="text-xs text-slate-400 mb-1">Feb 2025</div>
+                                                <div class="font-medium text-white text-sm">${t.cert2Title}</div>
+                                                <div class="text-xs text-cyan-400">EF SET</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-2">
+                                        <i data-lucide="plane" class="w-6 h-6 text-cyan-400"></i> ${t.globalTitle}
+                                    </h2>
+                                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 p-8 rounded-xl h-full flex flex-col justify-center">
+                                        <p class="text-slate-300 leading-relaxed mb-8 italic">
+                                            ${t.globalQuote}
+                                        </p>
+                                        
+                                        <div class="relative border-l-2 border-slate-700 ml-2 space-y-8">
+                                            <div class="relative pl-6">
+                                                <div class="absolute w-3 h-3 bg-cyan-500 rounded-full -left-[7px] top-1.5 ring-4 ring-slate-900"></div>
+                                                <div class="text-sm font-mono text-cyan-400 mb-1">${t.glob1Date}</div>
+                                                <h4 class="text-white font-medium">${t.glob1Title}</h4>
+                                                <p class="text-sm text-slate-400 mt-1">${t.glob1Desc}</p>
+                                            </div>
+                                            <div class="relative pl-6">
+                                                <div class="absolute w-3 h-3 bg-slate-500 rounded-full -left-[7px] top-1.5 ring-4 ring-slate-900"></div>
+                                                <div class="text-sm font-mono text-slate-400 mb-1">${t.glob2Date}</div>
+                                                <h4 class="text-white font-medium">${t.glob2Title}</h4>
+                                                <p class="text-sm text-slate-400 mt-1">${t.glob2Desc}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </section>
+                </main>
+
+                <footer id="contact" class="bg-slate-950 border-t border-slate-900 py-12">
+                    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                        <h2 class="text-3xl font-bold text-white mb-8">${t.contactTitle}</h2>
+                        <div class="flex flex-wrap justify-center gap-6 mb-12">
+                            <a href="mailto:ron.ebken@proton.me" class="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors text-lg">
+                                <i data-lucide="mail" class="w-5 h-5"></i> ron.ebken@proton.me
+                            </a>
+                            <a href="tel:+491735105665" class="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors text-lg">
+                                <i data-lucide="phone" class="w-5 h-5"></i> +49 173 510 5665
+                            </a>
+                            <a href="https://www.linkedin.com/in/ron-ebken-18772423b/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors text-lg">
+                                <i data-lucide="linkedin" class="w-5 h-5"></i> ${t.profileLi}
+                            </a>
+                        </div>
+                        <p class="text-slate-600 text-sm">
+                            © ${new Date().getFullYear()} Ron Ebken. ${t.rights}
+                        </p>
+                    </div>
+                </footer>
+            `;
+
+            // Tell Lucide to render the SVG icons based on the data-lucide attributes injected
+            lucide.createIcons();
+            
+            // Re-apply scroll spy styling after render
+            updateScrollSpy();
+        }
+
+        // Initialize application on page load
+        renderApp();
+    </script>
+</body>
+</html>
