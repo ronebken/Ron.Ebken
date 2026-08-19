@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="de" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ron Ebken | Cybersecurity Portfolio</title>
-    
+    <title>ITSEC NORDWEST | IT-Sicherheitsberatung</title>
+    <meta name="description" content="Freiberufliche IT-Sicherheitsberatung: Schwachstellenanalysen, Security Monitoring und technische Unterstützung bei IT-Sicherheitsgutachten – für Unternehmen, Kanzleien und Sachverständige.">
+
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
@@ -14,7 +15,7 @@
         ::selection {
             background-color: rgba(6, 182, 212, 0.3);
         }
-        
+
         /* Utility class to keep active nav links highlighted */
         .nav-active {
             color: #22d3ee !important; /* cyan-400 */
@@ -29,19 +30,20 @@
         // --- DATA & TRANSLATIONS ---
         const translations = {
             en: {
-                nav: ['Home', 'About', 'Experience', 'Skills', 'Education'],
-                heroBadge: 'Targeting Cyber Security Opportunities',
+                nav: ['Home', 'Services', 'About', 'Background', 'Credentials'],
+                heroBadge: 'Freelance IT Security Consulting',
                 heroHi: "Hi, I'm",
-                heroDesc1: "Cybersecurity Specialist",
-                heroDesc2: " bridging the gap between robust IT security operations, code-level technical expertise, and strategic business goals.",
-                btnTouch: "Get in Touch",
+                heroDesc1: "a freelance IT security consultant",
+                heroDesc2: " supporting companies, law firms, and expert witnesses with vulnerability analysis, security assessments, and technical groundwork for complex IT security questions.",
+                btnTouch: "Discuss a project",
                 btnLi: "Connect on LinkedIn",
                 location: "Westerstede, Germany",
-                aboutTitle: "About Me",
-                aboutP1: "I am a dedicated cybersecurity professional with a unique advantage: a deep understanding of how software is built and how businesses operate. Currently pursuing my M.Sc. in Cyber Security Management, my career spans IT security operations, software engineering, and business development.",
-                aboutP2: "This multi-disciplinary background enables me to approach security not just as a technical necessity, but as a strategic enabler. Having assessed critical security warnings at the Federal IT Center (ITZBund) and contributed to complex software architectures for major health insurers, I know how to implement robust, practical security measures that align with fast-paced business objectives.",
-                hobbies: ['Travel', 'Gaming', 'Festivals', 'Event Coordination', 'Tabletop Games'],
-                expTitle: "Professional Experience",
+                aboutTitle: "About",
+                aboutP1: "I support companies, law firms, and expert witnesses on a freelance basis with IT security matters — from technical analysis to clear write-ups for expert reports and decision-making. Alongside my role at IBM Technology Lifecycle Services and my M.Sc. in Cyber Security Management, I bring hands-on experience in security operations, software development, and business development.",
+                aboutP2: "That combination of technical depth and business understanding helps me not just assess security risks, but explain them clearly. At the Federal IT Center (ITZBund), I assessed security warnings and tracked their remediation; at T-Systems, I helped build complex software architecture for a major health insurer. That experience feeds directly into my freelance work today.",
+                hobbies: ['Vulnerability Analysis', 'Security Monitoring', 'Expert Report Support', 'Incident Response', 'Compliance & NIS2'],
+                expTitle: "Background",
+                expIntro: "Practical experience across security operations, software development, and business development — the foundation for my freelance consulting work.",
                 jobs: [
                     {
                         title: "Master@IBM Business Development",
@@ -68,13 +70,14 @@
                         desc: "Coordinated technician deployments within Operations Control for Technical Infrastructure. Monitored and calculated key performance indicators (KPIs) to ensure operational efficiency and service quality."
                     }
                 ],
-                skillsTitle: "Core Competencies",
-                secTitle: "IT Security",
-                secSkills: ["Security Operations", "Incident Management", "Vulnerability Mgmt.", "Threat Analysis", "Compliance Monitoring"],
-                devTitle: "Development",
-                devSkills: ["Full-Stack Development", "Web Applications", "Software Architecture", "Secure Coding Practices", "Agile Lifecycles"],
-                bizTitle: "Business & Ops",
-                bizSkills: ["Business Development", "Sales Operations", "Market Analysis", "KPI Monitoring", "Lead Generation"],
+                skillsTitle: "Services",
+                skillsIntro: "Freelance support for companies, law firms, and expert witnesses — project-based and flexible, alongside my main role.",
+                secTitle: "Security Assessments & Expert Reports",
+                secSkills: ["Vulnerability analysis", "Technical support for IT security expert reports", "Risk assessments", "Clear documentation for decision-makers", "Findings & reporting"],
+                devTitle: "Monitoring & Analysis",
+                devSkills: ["Log & network analysis", "Security monitoring setup", "Incident response support", "Threat detection", "Security incident review"],
+                bizTitle: "Advisory & Compliance",
+                bizSkills: ["IT security concepts", "NIS2 & compliance advisory", "Process & awareness documentation", "Strategic security advisory", "Bridging technical and business teams"],
                 langTitle: "Languages",
                 langs: [
                     { name: "German", level: "Native" },
@@ -91,32 +94,35 @@
                 edu2Org: "FOM University for Applied Sciences, Hamburg",
                 cert1Title: "Fundamentals of Cybersecurity",
                 cert2Title: "English Certification C2",
-                globalTitle: "Global Perspective",
-                globalQuote: '"I believe diverse cultural experiences are fundamental to thriving in global business development and technology."',
-                glob1Date: "Jan 2023 - Sep 2024",
-                glob1Title: "Southeast Asia Expedition",
-                glob1Desc: "Post-Bachelor's travel immersing in diverse cultures and broadening global perspectives.",
-                glob2Date: "Oct 2018 - Apr 2019",
-                glob2Title: "Oceania Gap Year",
-                glob2Desc: "Independent travel across New Zealand & Australia developing adaptability and independence.",
-                contactTitle: "Ready to Connect?",
+                whyTitle: "Why work with me",
+                whyQuote: "Technical depth, business understanding, and the discretion sensitive security topics require.",
+                why1Title: "Confidentiality",
+                why1Desc: "My work at ITZBund and IBM has trained me to handle sensitive information with discretion as a matter of course.",
+                why2Title: "My own security lab",
+                why2Desc: "Suricata, Zeek, and network monitoring in a lab I run myself — tools I don't just know about, but operate day to day.",
+                why3Title: "Flexible & project-based",
+                why3Desc: "Engagements sized to what you need, without long-term commitment — well suited to a single expert report or a clearly scoped project.",
+                contactTitle: "Let's talk about your project",
                 profileLi: "LinkedIn Profile",
-                rights: "All rights reserved."
+                rights: "All rights reserved.",
+                footerImpressum: "Legal Notice",
+                footerPrivacy: "Privacy Policy"
             },
             de: {
-                nav: ['Start', 'Über mich', 'Erfahrung', 'Fähigkeiten', 'Bildung'],
-                heroBadge: 'Zielgerichtete Suche nach Cyber Security Positionen',
+                nav: ['Start', 'Leistungen', 'Über mich', 'Werdegang', 'Qualifikation'],
+                heroBadge: 'Freiberufliche IT-Sicherheitsberatung',
                 heroHi: "Hallo, ich bin",
-                heroDesc1: "Cybersecurity-Spezialist",
-                heroDesc2: ", der die Brücke zwischen IT-Sicherheitsbetrieb, tiefgreifender technischer Expertise und strategischen Unternehmenszielen schlägt.",
-                btnTouch: "Kontakt aufnehmen",
+                heroDesc1: "freiberuflicher IT-Sicherheitsberater",
+                heroDesc2: ", der Unternehmen, Kanzleien und Sachverständige bei Schwachstellenanalysen, Sicherheitsbewertungen und der technischen Aufbereitung komplexer IT-Sicherheitsfragen unterstützt.",
+                btnTouch: "Projekt besprechen",
                 btnLi: "Auf LinkedIn vernetzen",
                 location: "Westerstede, Deutschland",
                 aboutTitle: "Über mich",
-                aboutP1: "Ich bin ein engagierter Cybersecurity-Experte mit einem einzigartigen Vorteil: einem tiefen Verständnis dafür, wie Software entwickelt wird und wie Unternehmen funktionieren. Aktuell absolviere ich meinen M.Sc. in Cyber Security Management. Mein Werdegang umfasst IT-Security Operations, Software Engineering und Business Development.",
-                aboutP2: "Dieser multidisziplinäre Hintergrund ermöglicht es mir, Sicherheit nicht nur als technische Notwendigkeit, sondern als strategischen Wegbereiter zu betrachten. Nachdem ich kritische Sicherheitswarnungen beim ITZBund bewertet und an komplexen Softwarearchitekturen für große Krankenversicherungen mitgewirkt habe, weiß ich, wie man robuste und praxisnahe Sicherheitsmaßnahmen implementiert, die dynamische Unternehmensziele unterstützen.",
-                hobbies: ['Reisen', 'Gaming', 'Festivals', 'Eventkoordination', 'Tabletop-Spiele'],
-                expTitle: "Berufserfahrung",
+                aboutP1: "Ich unterstütze Unternehmen, Kanzleien und Sachverständige freiberuflich bei IT-sicherheitsrelevanten Fragestellungen – von der technischen Analyse bis zur verständlichen Aufbereitung für Gutachten und Entscheidungsvorlagen. Parallel zu meiner Tätigkeit bei IBM Technology Lifecycle Services und meinem M.Sc. in Cyber Security Management bringe ich praktische Erfahrung aus Security Operations, Softwareentwicklung und Business Development mit.",
+                aboutP2: "Diese Kombination aus technischer Tiefe und wirtschaftlichem Verständnis hilft mir, Sicherheit nicht nur zu bewerten, sondern auch verständlich zu vermitteln. Beim ITZBund habe ich sicherheitsrelevante Warnmeldungen bewertet und deren Umsetzung begleitet, bei T-Systems komplexe Softwarearchitekturen für einen großen Krankenversicherer mitentwickelt. Diese Erfahrung fließt direkt in meine freiberufliche Arbeit ein.",
+                hobbies: ['Schwachstellenanalyse', 'Security Monitoring', 'Gutachten-Unterstützung', 'Incident Response', 'Compliance & NIS2'],
+                expTitle: "Werdegang",
+                expIntro: "Praktische Erfahrung aus Security Operations, Softwareentwicklung und Business Development – die Grundlage meiner freiberuflichen Beratungstätigkeit.",
                 jobs: [
                     {
                         title: "Master@IBM Business Development",
@@ -143,13 +149,14 @@
                         desc: "Koordination von Technikereinsätzen innerhalb der Betriebssteuerung für die Technische Infrastruktur. Überwachung und Berechnung von Key Performance Indicators (KPIs) zur Sicherstellung der operativen Effizienz und Servicequalität."
                     }
                 ],
-                skillsTitle: "Kernkompetenzen",
-                secTitle: "IT-Sicherheit",
-                secSkills: ["Security Operations", "Incident Management", "Schwachstellenmanagement", "Bedrohungsanalyse", "Compliance-Überwachung"],
-                devTitle: "Entwicklung",
-                devSkills: ["Full-Stack-Entwicklung", "Webanwendungen", "Softwarearchitektur", "Secure Coding", "Agile Methoden"],
-                bizTitle: "Business & Ops",
-                bizSkills: ["Business Development", "Sales Operations", "Marktanalysen", "KPI-Überwachung", "Lead-Generierung"],
+                skillsTitle: "Leistungen",
+                skillsIntro: "Freiberufliche Unterstützung für Unternehmen, Kanzleien und Sachverständige – projektbasiert und flexibel neben meiner Haupttätigkeit.",
+                secTitle: "Sicherheitsanalysen & Gutachten",
+                secSkills: ["Schwachstellenanalysen", "Technische Unterstützung bei IT-Sicherheitsgutachten", "Risikobewertungen", "Verständliche Dokumentation für Entscheidungsträger", "Nachweisführung & Reporting"],
+                devTitle: "Monitoring & Analyse",
+                devSkills: ["Log- & Netzwerkanalyse", "Security-Monitoring-Setups", "Incident-Response-Unterstützung", "Threat Detection", "Auswertung von Sicherheitsvorfällen"],
+                bizTitle: "Beratung & Compliance",
+                bizSkills: ["IT-Sicherheitskonzepte", "NIS2- & Compliance-Beratung", "Prozess- & Awareness-Dokumentation", "Strategische Sicherheitsberatung", "Vermittlung zwischen Technik & Management"],
                 langTitle: "Sprachen",
                 langs: [
                     { name: "Deutsch", level: "Muttersprache" },
@@ -157,7 +164,7 @@
                     { name: "Spanisch", level: "Grundkenntnisse" },
                     { name: "Japanisch", level: "Grundkenntnisse" }
                 ],
-                eduTitle: "Bildung & Zertifikate",
+                eduTitle: "Ausbildung & Zertifikate",
                 edu1Date: "Sep 2024 - Heute",
                 edu1Title: "M.Sc. Cyber Security Management",
                 edu1Org: "FOM Hochschule, Hamburg",
@@ -166,22 +173,24 @@
                 edu2Org: "FOM Hochschule, Hamburg",
                 cert1Title: "Grundlagen der Cybersecurity",
                 cert2Title: "Englisch-Zertifikat C2",
-                globalTitle: "Globale Perspektive",
-                globalQuote: '"Ich bin davon überzeugt, dass vielfältige kulturelle Erfahrungen eine essenzielle Grundlage für den Erfolg in der globalen Technologie- und Geschäftsentwicklung sind."',
-                glob1Date: "Jan 2023 - Sep 2024",
-                glob1Title: "Südostasien Expedition",
-                glob1Desc: "Reisen nach dem Bachelorabschluss, um in diverse Kulturen einzutauchen und globale Perspektiven zu erweitern.",
-                glob2Date: "Okt 2018 - Apr 2019",
-                glob2Title: "Ozeanien Gap Year",
-                glob2Desc: "Unabhängiges Reisen durch Neuseeland und Australien zur Förderung von Anpassungsfähigkeit und Eigenständigkeit.",
-                contactTitle: "Bereit zur Vernetzung?",
+                whyTitle: "Warum mit mir zusammenarbeiten?",
+                whyQuote: "Technische Tiefe, unternehmerisches Verständnis und die Diskretion, die sensible Sicherheitsthemen erfordern.",
+                why1Title: "Vertraulichkeit",
+                why1Desc: "Aus meiner Tätigkeit beim ITZBund und bei IBM bin ich es gewohnt, mit sensiblen Informationen selbstverständlich diskret umzugehen.",
+                why2Title: "Eigenes Security-Lab",
+                why2Desc: "Suricata, Zeek und Netzwerk-Monitoring im eigenen Lab – Technik, die ich nicht nur kenne, sondern täglich selbst betreibe.",
+                why3Title: "Flexibel & projektbasiert",
+                why3Desc: "Zusammenarbeit passgenau nach Bedarf, ohne feste Bindung – gut geeignet für ein einzelnes Gutachten oder ein klar abgegrenztes Projekt.",
+                contactTitle: "Sprechen wir über Ihr Projekt",
                 profileLi: "LinkedIn Profil",
-                rights: "Alle Rechte vorbehalten."
+                rights: "Alle Rechte vorbehalten.",
+                footerImpressum: "Impressum",
+                footerPrivacy: "Datenschutz"
             }
         };
 
-        const sectionIds = ['home', 'about', 'experience', 'skills', 'education'];
-        let currentLang = 'en';
+        const sectionIds = ['home', 'skills', 'about', 'experience', 'education'];
+        let currentLang = 'de';
 
         // --- GLOBAL FUNCTIONS ---
         function toggleLang() {
@@ -233,7 +242,7 @@
                         <div class="flex items-center justify-between h-16">
                             <div class="flex-shrink-0 font-bold text-xl tracking-tighter text-white flex items-center gap-2">
                                 <i data-lucide="terminal" class="w-5 h-5 text-cyan-400"></i>
-                                <span>R<span class="text-cyan-400">.</span>Ebken</span>
+                                <span>ITSEC<span class="text-cyan-400">.</span>NORDWEST</span>
                             </div>
 
                             <div class="hidden md:flex items-center space-x-8">
@@ -257,17 +266,17 @@
                 <main class="pt-16">
                     <section id="home" class="min-h-[90vh] flex items-center relative overflow-hidden">
                         <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
-                        
+
                         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-20">
                             <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-cyan-400 text-sm font-medium mb-6">
                                 <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
                                 ${t.heroBadge}
                             </div>
-                            
+
                             <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
                                 ${t.heroHi} <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Ron Ebken</span>
                             </h1>
-                            
+
                             <p class="text-xl md:text-3xl font-light text-slate-400 mb-8 max-w-3xl leading-relaxed">
                                 <span class="text-white font-medium">${t.heroDesc1}</span>${t.heroDesc2}
                             </p>
@@ -283,13 +292,62 @@
 
                             <div class="flex flex-col sm:flex-row gap-6 text-sm text-slate-400">
                                 <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-cyan-500"></i> ${t.location}</div>
-                                <div class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-cyan-500"></i> ron.ebken@proton.me</div>
+                                <div class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-cyan-500"></i> info@itsec-nordwest.de</div>
                                 <div class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-cyan-500"></i> +49 173 510 5665</div>
                             </div>
                         </div>
                     </section>
 
-                    <section id="about" class="py-20 bg-slate-900/50 border-y border-slate-800/50">
+                    <section id="skills" class="py-20 bg-slate-900/50 border-y border-slate-800/50">
+                        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <h2 class="text-3xl font-bold text-white mb-4 text-center">${t.skillsTitle}</h2>
+                            <p class="text-slate-400 text-center max-w-2xl mx-auto mb-12">${t.skillsIntro}</p>
+
+                            <div class="grid md:grid-cols-3 gap-8">
+                                <div class="bg-slate-900 border border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.15)] rounded-xl p-6 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all group relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
+                                        <i data-lucide="shield" class="w-24 h-24 text-cyan-400"></i>
+                                    </div>
+                                    <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative z-10">
+                                        <i data-lucide="shield" class="w-6 h-6 text-cyan-400"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white mb-4 relative z-10">${t.secTitle}</h3>
+                                    <ul class="space-y-3 relative z-10">
+                                        ${t.secSkills.map(skill => `<li class="flex items-center text-slate-200 font-medium"><i data-lucide="chevron-right" class="w-4 h-4 text-cyan-500 mr-2"></i> ${skill}</li>`).join('')}
+                                    </ul>
+                                </div>
+
+                                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-teal-500/50 transition-colors group">
+                                    <div class="w-12 h-12 bg-teal-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="activity" class="w-6 h-6 text-teal-400"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white mb-4">${t.devTitle}</h3>
+                                    <ul class="space-y-3">
+                                        ${t.devSkills.map(skill => `<li class="flex items-center text-slate-300"><i data-lucide="chevron-right" class="w-4 h-4 text-teal-500 mr-2"></i> ${skill}</li>`).join('')}
+                                    </ul>
+                                </div>
+
+                                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-blue-500/50 transition-colors group">
+                                    <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="scale" class="w-6 h-6 text-blue-400"></i>
+                                    </div>
+                                    <h3 class="text-xl font-bold text-white mb-4">${t.bizTitle}</h3>
+                                    <ul class="space-y-3">
+                                        ${t.bizSkills.map(skill => `<li class="flex items-center text-slate-300"><i data-lucide="chevron-right" class="w-4 h-4 text-blue-500 mr-2"></i> ${skill}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="mt-12 text-center">
+                                <h3 class="text-xl font-bold text-white mb-6">${t.langTitle}</h3>
+                                <div class="flex flex-wrap justify-center gap-4">
+                                    ${t.langs.map(l => `<span class="px-6 py-2 bg-slate-800 rounded-full border border-slate-700 text-white font-medium">${l.name} <span class="text-cyan-500 ml-2">${l.level}</span></span>`).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section id="about" class="py-20">
                         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div class="grid md:grid-cols-2 gap-12 items-center">
                                 <div>
@@ -305,9 +363,9 @@
                                 <div class="relative hidden md:block">
                                     <div class="relative rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.3)] border border-slate-700 group">
                                         <div class="absolute inset-0 bg-cyan-900/20 mix-blend-overlay group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
-                                        
+
                                         <img src="ron_ebken.jpg" alt="Ron Ebken" class="w-full h-auto object-cover aspect-[4/5] object-top group-hover:scale-105 transition-transform duration-700 ease-in-out" />
-                                        
+
                                         <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-slate-900 to-transparent z-10 pointer-events-none"></div>
                                     </div>
                                 </div>
@@ -315,14 +373,15 @@
                         </div>
                     </section>
 
-                    <section id="experience" class="py-20">
+                    <section id="experience" class="py-20 bg-slate-900/50 border-y border-slate-800/50">
                         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <h2 class="text-3xl font-bold text-white mb-12 flex items-center gap-2">
+                            <h2 class="text-3xl font-bold text-white mb-4 flex items-center gap-2">
                                 <i data-lucide="briefcase" class="w-6 h-6 text-cyan-400"></i> ${t.expTitle}
                             </h2>
+                            <p class="text-slate-400 mb-12 max-w-2xl">${t.expIntro}</p>
 
                             <div class="relative border-l border-slate-700 ml-3 md:ml-4">
-                                
+
                                 <div class="mb-12 ml-8 relative group">
                                     <span class="absolute flex items-center justify-center w-8 h-8 bg-slate-900 rounded-full -left-12 ring-4 ring-slate-950 border border-cyan-500/30 group-hover:border-cyan-400 transition-colors">
                                         <i data-lucide="line-chart" class="w-4 h-4 text-cyan-400"></i>
@@ -383,58 +442,10 @@
                         </div>
                     </section>
 
-                    <section id="skills" class="py-20 bg-slate-900/50 border-y border-slate-800/50">
-                        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <h2 class="text-3xl font-bold text-white mb-12 text-center">${t.skillsTitle}</h2>
-                            
-                            <div class="grid md:grid-cols-3 gap-8">
-                                <div class="bg-slate-900 border border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.15)] rounded-xl p-6 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all group relative overflow-hidden">
-                                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                        <i data-lucide="shield" class="w-24 h-24 text-cyan-400"></i>
-                                    </div>
-                                    <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative z-10">
-                                        <i data-lucide="shield" class="w-6 h-6 text-cyan-400"></i>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-white mb-4 relative z-10">${t.secTitle}</h3>
-                                    <ul class="space-y-3 relative z-10">
-                                        ${t.secSkills.map(skill => `<li class="flex items-center text-slate-200 font-medium"><i data-lucide="chevron-right" class="w-4 h-4 text-cyan-500 mr-2"></i> ${skill}</li>`).join('')}
-                                    </ul>
-                                </div>
-
-                                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-teal-500/50 transition-colors group">
-                                    <div class="w-12 h-12 bg-teal-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                        <i data-lucide="code" class="w-6 h-6 text-teal-400"></i>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-white mb-4">${t.devTitle}</h3>
-                                    <ul class="space-y-3">
-                                        ${t.devSkills.map(skill => `<li class="flex items-center text-slate-300"><i data-lucide="chevron-right" class="w-4 h-4 text-teal-500 mr-2"></i> ${skill}</li>`).join('')}
-                                    </ul>
-                                </div>
-
-                                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-blue-500/50 transition-colors group">
-                                    <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                        <i data-lucide="line-chart" class="w-6 h-6 text-blue-400"></i>
-                                    </div>
-                                    <h3 class="text-xl font-bold text-white mb-4">${t.bizTitle}</h3>
-                                    <ul class="space-y-3">
-                                        ${t.bizSkills.map(skill => `<li class="flex items-center text-slate-300"><i data-lucide="chevron-right" class="w-4 h-4 text-blue-500 mr-2"></i> ${skill}</li>`).join('')}
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <div class="mt-12 text-center">
-                                <h3 class="text-xl font-bold text-white mb-6">${t.langTitle}</h3>
-                                <div class="flex flex-wrap justify-center gap-4">
-                                    ${t.langs.map(l => `<span class="px-6 py-2 bg-slate-800 rounded-full border border-slate-700 text-white font-medium">${l.name} <span class="text-cyan-500 ml-2">${l.level}</span></span>`).join('')}
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
                     <section id="education" class="py-20">
                         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                             <div class="grid md:grid-cols-2 gap-12">
-                                
+
                                 <div>
                                     <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-2">
                                         <i data-lucide="graduation-cap" class="w-6 h-6 text-cyan-400"></i> ${t.eduTitle}
@@ -450,7 +461,7 @@
                                             <h3 class="text-lg font-bold text-white">${t.edu2Title}</h3>
                                             <p class="text-slate-400">${t.edu2Org}</p>
                                         </div>
-                                        
+
                                         <div class="grid grid-cols-2 gap-4 mt-6">
                                             <div class="bg-slate-800/50 border border-slate-700 p-4 rounded-xl text-center">
                                                 <div class="text-xs text-slate-400 mb-1">Apr 2025</div>
@@ -468,25 +479,40 @@
 
                                 <div>
                                     <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-2">
-                                        <i data-lucide="plane" class="w-6 h-6 text-cyan-400"></i> ${t.globalTitle}
+                                        <i data-lucide="heart-handshake" class="w-6 h-6 text-cyan-400"></i> ${t.whyTitle}
                                     </h2>
                                     <div class="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 p-8 rounded-xl h-full flex flex-col justify-center">
                                         <p class="text-slate-300 leading-relaxed mb-8 italic">
-                                            ${t.globalQuote}
+                                            "${t.whyQuote}"
                                         </p>
-                                        
-                                        <div class="relative border-l-2 border-slate-700 ml-2 space-y-8">
-                                            <div class="relative pl-6">
-                                                <div class="absolute w-3 h-3 bg-cyan-500 rounded-full -left-[7px] top-1.5 ring-4 ring-slate-900"></div>
-                                                <div class="text-sm font-mono text-cyan-400 mb-1">${t.glob1Date}</div>
-                                                <h4 class="text-white font-medium">${t.glob1Title}</h4>
-                                                <p class="text-sm text-slate-400 mt-1">${t.glob1Desc}</p>
+
+                                        <div class="space-y-6">
+                                            <div class="flex items-start gap-4">
+                                                <span class="flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-full bg-cyan-500/15 border border-cyan-500/30">
+                                                    <i data-lucide="lock" class="w-4 h-4 text-cyan-400"></i>
+                                                </span>
+                                                <div>
+                                                    <h4 class="text-white font-medium">${t.why1Title}</h4>
+                                                    <p class="text-sm text-slate-400 mt-1">${t.why1Desc}</p>
+                                                </div>
                                             </div>
-                                            <div class="relative pl-6">
-                                                <div class="absolute w-3 h-3 bg-slate-500 rounded-full -left-[7px] top-1.5 ring-4 ring-slate-900"></div>
-                                                <div class="text-sm font-mono text-slate-400 mb-1">${t.glob2Date}</div>
-                                                <h4 class="text-white font-medium">${t.glob2Title}</h4>
-                                                <p class="text-sm text-slate-400 mt-1">${t.glob2Desc}</p>
+                                            <div class="flex items-start gap-4">
+                                                <span class="flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-full bg-teal-500/15 border border-teal-500/30">
+                                                    <i data-lucide="server" class="w-4 h-4 text-teal-400"></i>
+                                                </span>
+                                                <div>
+                                                    <h4 class="text-white font-medium">${t.why2Title}</h4>
+                                                    <p class="text-sm text-slate-400 mt-1">${t.why2Desc}</p>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-start gap-4">
+                                                <span class="flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-full bg-blue-500/15 border border-blue-500/30">
+                                                    <i data-lucide="calendar-clock" class="w-4 h-4 text-blue-400"></i>
+                                                </span>
+                                                <div>
+                                                    <h4 class="text-white font-medium">${t.why3Title}</h4>
+                                                    <p class="text-sm text-slate-400 mt-1">${t.why3Desc}</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -501,8 +527,8 @@
                     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
                         <h2 class="text-3xl font-bold text-white mb-8">${t.contactTitle}</h2>
                         <div class="flex flex-wrap justify-center gap-6 mb-12">
-                            <a href="mailto:ron.ebken@proton.me" class="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors text-lg">
-                                <i data-lucide="mail" class="w-5 h-5"></i> ron.ebken@proton.me
+                            <a href="mailto:info@itsec-nordwest.de" class="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors text-lg">
+                                <i data-lucide="mail" class="w-5 h-5"></i> info@itsec-nordwest.de
                             </a>
                             <a href="tel:+491735105665" class="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors text-lg">
                                 <i data-lucide="phone" class="w-5 h-5"></i> +49 173 510 5665
@@ -512,15 +538,20 @@
                             </a>
                         </div>
                         <p class="text-slate-600 text-sm">
-                            © ${new Date().getFullYear()} Ron Ebken. ${t.rights}
+                            © ${new Date().getFullYear()} ITSEC NORDWEST — Ron Ebken. ${t.rights}
                         </p>
+                        <div class="mt-4 flex items-center justify-center gap-4 text-xs text-slate-600">
+                            <a href="impressum.html" class="hover:text-cyan-400 transition-colors">${t.footerImpressum}</a>
+                            <span>·</span>
+                            <a href="datenschutz.html" class="hover:text-cyan-400 transition-colors">${t.footerPrivacy}</a>
+                        </div>
                     </div>
                 </footer>
             `;
 
             // Tell Lucide to render the SVG icons based on the data-lucide attributes injected
             lucide.createIcons();
-            
+
             // Re-apply scroll spy styling after render
             updateScrollSpy();
         }
