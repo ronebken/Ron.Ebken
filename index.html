@@ -11,18 +11,21 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
-        /* Custom styles to match the React version's selection color */
         ::selection {
-            background-color: rgba(6, 182, 212, 0.3);
+            background-color: rgba(37, 99, 235, 0.15);
         }
 
-        /* Utility class to keep active nav links highlighted */
         .nav-active {
-            color: #22d3ee !important; /* cyan-400 */
+            color: #2563eb !important; /* blue-600 */
+        }
+
+        .bg-grid {
+            background-image: radial-gradient(circle, rgba(37, 99, 235, 0.12) 1px, transparent 1px);
+            background-size: 28px 28px;
         }
     </style>
 </head>
-<body class="bg-slate-950 text-slate-300 font-sans min-h-screen">
+<body class="bg-white text-slate-600 font-sans min-h-screen">
 
     <div id="app"></div>
 
@@ -30,76 +33,32 @@
         // --- DATA & TRANSLATIONS ---
         const translations = {
             en: {
-                nav: ['Home', 'Services', 'About', 'Background', 'Credentials'],
+                nav: ['Home', 'Services', 'Why us', 'Contact'],
                 heroBadge: 'Freelance IT Security Consulting',
-                heroHi: "Hi, I'm",
-                heroDesc1: "a freelance IT security consultant",
-                heroDesc2: " supporting companies, law firms, and expert witnesses with vulnerability analysis, security assessments, and technical groundwork for complex IT security questions.",
+                heroTitlePre: "IT security consulting with ",
+                heroTitleAccent: "technical depth",
+                heroDesc: "Supporting companies, law firms, and expert witnesses with vulnerability analysis, security assessments, and technical groundwork for complex IT security questions.",
+                credentialLine: "Ron Ebken · M.Sc. Cyber Security Management",
                 btnTouch: "Discuss a project",
                 btnLi: "Connect on LinkedIn",
                 location: "Westerstede, Germany",
-                aboutTitle: "About",
-                aboutP1: "I support companies, law firms, and expert witnesses on a freelance basis with IT security matters — from technical analysis to clear write-ups for expert reports and decision-making. Alongside my role at IBM Technology Lifecycle Services and my M.Sc. in Cyber Security Management, I bring hands-on experience in security operations, software development, and business development.",
-                aboutP2: "That combination of technical depth and business understanding helps me not just assess security risks, but explain them clearly. At the Federal IT Center (ITZBund), I assessed security warnings and tracked their remediation; at T-Systems, I helped build complex software architecture for a major health insurer. That experience feeds directly into my freelance work today.",
-                hobbies: ['Vulnerability Analysis', 'Security Monitoring', 'Expert Report Support', 'Incident Response', 'Compliance & NIS2'],
-                expTitle: "Background",
-                expIntro: "Practical experience across security operations, software development, and business development — the foundation for my freelance consulting work.",
-                jobs: [
-                    {
-                        title: "Master@IBM Business Development",
-                        date: "Sep 2024 - Present",
-                        company: "IBM Technology Lifecycle Services, Hamburg",
-                        desc: "Provide essential support to the sales team with key operational tasks. Actively involved in strategic business development activities, conducting market analysis to identify new opportunities, and generating qualified leads to expand the client base."
-                    },
-                    {
-                        title: "Information Security Analyst",
-                        date: "Aug 2023 - Sep 2024",
-                        company: "ITZBund (Federal IT Center), Hannover",
-                        desc: "Worked in Information and Incident Management. Assessed security warnings relevance and monitored implementation of security measures. Exchanged information with clients/supervisory authorities, participated in vulnerability management committees, and optimized internal documentation."
-                    },
-                    {
-                        title: "Full-stack Developer",
-                        date: "Mar 2020 - Dec 2022",
-                        company: "T-Systems Multimedia Solutions (Deutsche Telekom AG), Hamburg",
-                        desc: "Responsible for the end-to-end software development of web applications for a major health insurance company. Scope covered the entire lifecycle: initial planning, architecture modeling, implementation, development, and testing."
-                    },
-                    {
-                        title: "Operations Controller",
-                        date: "Sep 2019 - Feb 2020",
-                        company: "Deutsche Telekom AG, Hamburg",
-                        desc: "Coordinated technician deployments within Operations Control for Technical Infrastructure. Monitored and calculated key performance indicators (KPIs) to ensure operational efficiency and service quality."
-                    }
-                ],
                 skillsTitle: "Services",
-                skillsIntro: "Freelance support for companies, law firms, and expert witnesses — project-based and flexible, alongside my main role.",
+                skillsIntro: "Freelance support for companies, law firms, and expert witnesses — project-based and flexible.",
                 secTitle: "Security Assessments & Expert Reports",
                 secSkills: ["Vulnerability analysis", "Technical support for IT security expert reports", "Risk assessments", "Clear documentation for decision-makers", "Findings & reporting"],
                 devTitle: "Monitoring & Analysis",
                 devSkills: ["Log & network analysis", "Security monitoring setup", "Incident response support", "Threat detection", "Security incident review"],
                 bizTitle: "Advisory & Compliance",
                 bizSkills: ["IT security concepts", "NIS2 & compliance advisory", "Process & awareness documentation", "Strategic security advisory", "Bridging technical and business teams"],
-                langTitle: "Languages",
-                langs: [
-                    { name: "German", level: "Native" },
-                    { name: "English", level: "C2" },
-                    { name: "Spanish", level: "Basic" },
-                    { name: "Japanese", level: "Basic" }
-                ],
-                eduTitle: "Education & Certs",
-                edu1Date: "Sep 2024 - Present",
-                edu1Title: "M.Sc. Cyber Security Management",
-                edu1Org: "FOM University for Applied Sciences, Hamburg",
-                edu2Date: "Sep 2019 - Dec 2022",
-                edu2Title: "B.Sc. Business Information Systems",
-                edu2Org: "FOM University for Applied Sciences, Hamburg",
-                cert1Title: "Fundamentals of Cybersecurity",
-                cert2Title: "English Certification C2",
-                whyTitle: "Why work with me",
+                langNote: "Projects and expert reports available in German and English.",
+                whyTitle: "Why ITSEC NORDWEST",
                 whyQuote: "Technical depth, business understanding, and the discretion sensitive security topics require.",
+                qualTitle: "Qualification",
+                qualDesc: "M.Sc. Cyber Security Management, FOM University for Applied Sciences.",
                 why1Title: "Confidentiality",
-                why1Desc: "My work at ITZBund and IBM has trained me to handle sensitive information with discretion as a matter of course.",
-                why2Title: "My own security lab",
-                why2Desc: "Suricata, Zeek, and network monitoring in a lab I run myself — tools I don't just know about, but operate day to day.",
+                why1Desc: "Sensitive information is handled with the discretion IT security matters demand — as a matter of course.",
+                why2Title: "Own security lab",
+                why2Desc: "Suricata, Zeek, and network monitoring in active use in a self-run lab — not just theory.",
                 why3Title: "Flexible & project-based",
                 why3Desc: "Engagements sized to what you need, without long-term commitment — well suited to a single expert report or a clearly scoped project.",
                 contactTitle: "Let's talk about your project",
@@ -109,76 +68,32 @@
                 footerPrivacy: "Privacy Policy"
             },
             de: {
-                nav: ['Start', 'Leistungen', 'Über mich', 'Werdegang', 'Qualifikation'],
+                nav: ['Start', 'Leistungen', 'Warum wir', 'Kontakt'],
                 heroBadge: 'Freiberufliche IT-Sicherheitsberatung',
-                heroHi: "Hallo, ich bin",
-                heroDesc1: "freiberuflicher IT-Sicherheitsberater",
-                heroDesc2: ", der Unternehmen, Kanzleien und Sachverständige bei Schwachstellenanalysen, Sicherheitsbewertungen und der technischen Aufbereitung komplexer IT-Sicherheitsfragen unterstützt.",
+                heroTitlePre: "IT-Sicherheitsberatung mit ",
+                heroTitleAccent: "technischer Tiefe",
+                heroDesc: "Unterstützung für Unternehmen, Kanzleien und Sachverständige bei Schwachstellenanalysen, Sicherheitsbewertungen und der technischen Aufbereitung komplexer IT-Sicherheitsfragen.",
+                credentialLine: "Ron Ebken · M.Sc. Cyber Security Management",
                 btnTouch: "Projekt besprechen",
                 btnLi: "Auf LinkedIn vernetzen",
                 location: "Westerstede, Deutschland",
-                aboutTitle: "Über mich",
-                aboutP1: "Ich unterstütze Unternehmen, Kanzleien und Sachverständige freiberuflich bei IT-sicherheitsrelevanten Fragestellungen – von der technischen Analyse bis zur verständlichen Aufbereitung für Gutachten und Entscheidungsvorlagen. Parallel zu meiner Tätigkeit bei IBM Technology Lifecycle Services und meinem M.Sc. in Cyber Security Management bringe ich praktische Erfahrung aus Security Operations, Softwareentwicklung und Business Development mit.",
-                aboutP2: "Diese Kombination aus technischer Tiefe und wirtschaftlichem Verständnis hilft mir, Sicherheit nicht nur zu bewerten, sondern auch verständlich zu vermitteln. Beim ITZBund habe ich sicherheitsrelevante Warnmeldungen bewertet und deren Umsetzung begleitet, bei T-Systems komplexe Softwarearchitekturen für einen großen Krankenversicherer mitentwickelt. Diese Erfahrung fließt direkt in meine freiberufliche Arbeit ein.",
-                hobbies: ['Schwachstellenanalyse', 'Security Monitoring', 'Gutachten-Unterstützung', 'Incident Response', 'Compliance & NIS2'],
-                expTitle: "Werdegang",
-                expIntro: "Praktische Erfahrung aus Security Operations, Softwareentwicklung und Business Development – die Grundlage meiner freiberuflichen Beratungstätigkeit.",
-                jobs: [
-                    {
-                        title: "Master@IBM Business Development",
-                        date: "Sep 2024 - Heute",
-                        company: "IBM Technology Lifecycle Services, Hamburg",
-                        desc: "Unterstützung des Vertriebsteams bei wichtigen operativen Aufgaben. Aktive Beteiligung an strategischen Business-Development-Aktivitäten, Durchführung von Marktanalysen zur Identifizierung neuer Geschäftsmöglichkeiten und Generierung qualifizierter Leads zum Ausbau des Kundenstamms."
-                    },
-                    {
-                        title: "Information Security Analyst",
-                        date: "Aug 2023 - Sep 2024",
-                        company: "ITZBund (Informationstechnikzentrum Bund), Hannover",
-                        desc: "Tätig im Informations- und Vorfallmanagement. Bewertung der Relevanz von Sicherheitswarnungen und Überwachung der Umsetzung von Sicherheitsmaßnahmen. Informationsaustausch mit Kunden und Aufsichtsbehörden, Teilnahme an Gremien zum Schwachstellenmanagement und Optimierung der internen Dokumentation."
-                    },
-                    {
-                        title: "Full-stack Developer",
-                        date: "Mär 2020 - Dez 2022",
-                        company: "T-Systems Multimedia Solutions (Deutsche Telekom AG), Hamburg",
-                        desc: "Verantwortlich für die End-to-End-Softwareentwicklung von Webanwendungen für eine große Krankenkasse. Der Aufgabenbereich umfasste den gesamten Entwicklungszyklus: von der initialen Planung und Architekturmodellierung bis hin zu Implementierung, Entwicklung und Testing."
-                    },
-                    {
-                        title: "Operations Controller",
-                        date: "Sep 2019 - Feb 2020",
-                        company: "Deutsche Telekom AG, Hamburg",
-                        desc: "Koordination von Technikereinsätzen innerhalb der Betriebssteuerung für die Technische Infrastruktur. Überwachung und Berechnung von Key Performance Indicators (KPIs) zur Sicherstellung der operativen Effizienz und Servicequalität."
-                    }
-                ],
                 skillsTitle: "Leistungen",
-                skillsIntro: "Freiberufliche Unterstützung für Unternehmen, Kanzleien und Sachverständige – projektbasiert und flexibel neben meiner Haupttätigkeit.",
+                skillsIntro: "Freiberufliche Unterstützung für Unternehmen, Kanzleien und Sachverständige – projektbasiert und flexibel.",
                 secTitle: "Sicherheitsanalysen & Gutachten",
                 secSkills: ["Schwachstellenanalysen", "Technische Unterstützung bei IT-Sicherheitsgutachten", "Risikobewertungen", "Verständliche Dokumentation für Entscheidungsträger", "Nachweisführung & Reporting"],
                 devTitle: "Monitoring & Analyse",
                 devSkills: ["Log- & Netzwerkanalyse", "Security-Monitoring-Setups", "Incident-Response-Unterstützung", "Threat Detection", "Auswertung von Sicherheitsvorfällen"],
                 bizTitle: "Beratung & Compliance",
                 bizSkills: ["IT-Sicherheitskonzepte", "NIS2- & Compliance-Beratung", "Prozess- & Awareness-Dokumentation", "Strategische Sicherheitsberatung", "Vermittlung zwischen Technik & Management"],
-                langTitle: "Sprachen",
-                langs: [
-                    { name: "Deutsch", level: "Muttersprache" },
-                    { name: "Englisch", level: "C2" },
-                    { name: "Spanisch", level: "Grundkenntnisse" },
-                    { name: "Japanisch", level: "Grundkenntnisse" }
-                ],
-                eduTitle: "Ausbildung & Zertifikate",
-                edu1Date: "Sep 2024 - Heute",
-                edu1Title: "M.Sc. Cyber Security Management",
-                edu1Org: "FOM Hochschule, Hamburg",
-                edu2Date: "Sep 2019 - Dez 2022",
-                edu2Title: "B.Sc. Wirtschaftsinformatik",
-                edu2Org: "FOM Hochschule, Hamburg",
-                cert1Title: "Grundlagen der Cybersecurity",
-                cert2Title: "Englisch-Zertifikat C2",
-                whyTitle: "Warum mit mir zusammenarbeiten?",
+                langNote: "Projekte und Gutachten auf Deutsch und Englisch möglich.",
+                whyTitle: "Warum ITSEC NORDWEST",
                 whyQuote: "Technische Tiefe, unternehmerisches Verständnis und die Diskretion, die sensible Sicherheitsthemen erfordern.",
+                qualTitle: "Qualifikation",
+                qualDesc: "M.Sc. Cyber Security Management, FOM Hochschule für Oekonomie & Management.",
                 why1Title: "Vertraulichkeit",
-                why1Desc: "Aus meiner Tätigkeit beim ITZBund und bei IBM bin ich es gewohnt, mit sensiblen Informationen selbstverständlich diskret umzugehen.",
+                why1Desc: "Sensible Informationen werden mit der Diskretion behandelt, die IT-Sicherheitsthemen erfordern – selbstverständlich und ohne Kompromisse.",
                 why2Title: "Eigenes Security-Lab",
-                why2Desc: "Suricata, Zeek und Netzwerk-Monitoring im eigenen Lab – Technik, die ich nicht nur kenne, sondern täglich selbst betreibe.",
+                why2Desc: "Suricata, Zeek und Netzwerk-Monitoring im eigenen Lab im praktischen Einsatz – keine reine Theorie.",
                 why3Title: "Flexibel & projektbasiert",
                 why3Desc: "Zusammenarbeit passgenau nach Bedarf, ohne feste Bindung – gut geeignet für ein einzelnes Gutachten oder ein klar abgegrenztes Projekt.",
                 contactTitle: "Sprechen wir über Ihr Projekt",
@@ -189,7 +104,7 @@
             }
         };
 
-        const sectionIds = ['home', 'skills', 'about', 'experience', 'education'];
+        const sectionIds = ['home', 'skills', 'why', 'contact'];
         let currentLang = 'de';
 
         // --- GLOBAL FUNCTIONS ---
@@ -220,10 +135,10 @@
             document.querySelectorAll('.nav-btn').forEach(btn => {
                 if (btn.getAttribute('data-section') === currentActive) {
                     btn.classList.add('nav-active');
-                    btn.classList.remove('text-slate-400');
+                    btn.classList.remove('text-slate-500');
                 } else {
                     btn.classList.remove('nav-active');
-                    btn.classList.add('text-slate-400');
+                    btn.classList.add('text-slate-500');
                 }
             });
         }
@@ -237,24 +152,24 @@
             const app = document.getElementById('app');
 
             app.innerHTML = `
-                <nav class="fixed top-0 w-full z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-800">
+                <nav class="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
                     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
                         <div class="flex items-center justify-between h-16">
-                            <div class="flex-shrink-0 font-bold text-xl tracking-tighter text-white flex items-center gap-2">
-                                <i data-lucide="terminal" class="w-5 h-5 text-cyan-400"></i>
-                                <span>ITSEC<span class="text-cyan-400">.</span>NORDWEST</span>
+                            <div class="flex-shrink-0 font-bold text-xl tracking-tighter text-slate-900 flex items-center gap-2">
+                                <i data-lucide="shield" class="w-5 h-5 text-blue-600"></i>
+                                <span>ITSEC<span class="text-blue-600">.</span>NORDWEST</span>
                             </div>
 
                             <div class="hidden md:flex items-center space-x-8">
                                 ${t.nav.map((item, index) => `
-                                    <button onclick="scrollToSection('${sectionIds[index]}')" data-section="${sectionIds[index]}" class="nav-btn text-slate-400 hover:text-white transition-colors px-3 py-2 rounded-md text-sm font-medium">
+                                    <button onclick="scrollToSection('${sectionIds[index]}')" data-section="${sectionIds[index]}" class="nav-btn text-slate-500 hover:text-slate-900 transition-colors px-3 py-2 rounded-md text-sm font-medium">
                                         ${item}
                                     </button>
                                 `).join('')}
                             </div>
 
                             <div class="flex items-center">
-                                <button onclick="toggleLang()" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900 border border-slate-700 hover:border-cyan-500 hover:text-cyan-400 text-sm text-slate-300 transition-all" title="Toggle Language">
+                                <button onclick="toggleLang()" class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-white border border-slate-300 hover:border-blue-400 hover:text-blue-600 text-sm text-slate-600 transition-all" title="Toggle Language">
                                     <i data-lucide="globe" class="w-4 h-4"></i>
                                     <span class="font-medium">${currentLang === 'en' ? 'DE' : 'EN'}</span>
                                 </button>
@@ -264,286 +179,156 @@
                 </nav>
 
                 <main class="pt-16">
-                    <section id="home" class="min-h-[90vh] flex items-center relative overflow-hidden">
-                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-cyan-500/10 rounded-full blur-[120px] pointer-events-none"></div>
+                    <section id="home" class="min-h-[85vh] flex items-center relative overflow-hidden bg-grid">
+                        <div class="absolute inset-0 bg-gradient-to-b from-white via-white to-slate-50 pointer-events-none"></div>
+                        <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-blue-200/30 rounded-full blur-[120px] pointer-events-none"></div>
 
                         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full py-20">
-                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-slate-800/50 border border-slate-700 text-cyan-400 text-sm font-medium mb-6">
-                                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-sm font-medium mb-6">
+                                <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
                                 ${t.heroBadge}
                             </div>
 
-                            <h1 class="text-5xl md:text-7xl font-extrabold text-white tracking-tight mb-6">
-                                ${t.heroHi} <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">Ron Ebken</span>
+                            <h1 class="text-5xl md:text-7xl font-extrabold text-slate-900 tracking-tight mb-6 max-w-4xl">
+                                ${t.heroTitlePre}<span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-600">${t.heroTitleAccent}</span>
                             </h1>
 
-                            <p class="text-xl md:text-3xl font-light text-slate-400 mb-8 max-w-3xl leading-relaxed">
-                                <span class="text-white font-medium">${t.heroDesc1}</span>${t.heroDesc2}
+                            <p class="text-xl md:text-2xl font-light text-slate-600 mb-6 max-w-3xl leading-relaxed">
+                                ${t.heroDesc}
                             </p>
 
+                            <div class="inline-flex items-center gap-2 text-sm text-slate-500 mb-10">
+                                <i data-lucide="graduation-cap" class="w-4 h-4 text-blue-600"></i> ${t.credentialLine}
+                            </div>
+
                             <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                                <button onclick="scrollToSection('contact')" class="px-8 py-3 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold transition-all shadow-[0_0_20px_rgba(6,182,212,0.3)] hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] flex items-center justify-center gap-2">
+                                <button onclick="scrollToSection('contact')" class="px-8 py-3 rounded-lg bg-blue-600 hover:bg-blue-500 text-white font-semibold transition-all shadow-lg shadow-blue-600/20 hover:shadow-blue-600/30 flex items-center justify-center gap-2">
                                     ${t.btnTouch} <i data-lucide="chevron-right" class="w-4 h-4"></i>
                                 </button>
-                                <a href="https://www.linkedin.com/in/ron-ebken-18772423b/" target="_blank" rel="noopener noreferrer" class="px-8 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-white font-medium transition-colors border border-slate-700 flex items-center justify-center gap-2">
+                                <a href="https://www.linkedin.com/in/ron-ebken-18772423b/" target="_blank" rel="noopener noreferrer" class="px-8 py-3 rounded-lg bg-white hover:bg-slate-50 text-slate-700 font-medium transition-colors border border-slate-300 hover:border-slate-400 flex items-center justify-center gap-2">
                                     <i data-lucide="linkedin" class="w-5 h-5"></i> ${t.btnLi}
                                 </a>
                             </div>
 
-                            <div class="flex flex-col sm:flex-row gap-6 text-sm text-slate-400">
-                                <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-cyan-500"></i> ${t.location}</div>
-                                <div class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-cyan-500"></i> info@itsec-nordwest.de</div>
-                                <div class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-cyan-500"></i> +49 173 510 5665</div>
+                            <div class="flex flex-col sm:flex-row gap-6 text-sm text-slate-500">
+                                <div class="flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4 text-blue-600"></i> ${t.location}</div>
+                                <div class="flex items-center gap-2"><i data-lucide="mail" class="w-4 h-4 text-blue-600"></i> info@itsec-nordwest.de</div>
+                                <div class="flex items-center gap-2"><i data-lucide="phone" class="w-4 h-4 text-blue-600"></i> +49 173 510 5665</div>
                             </div>
                         </div>
                     </section>
 
-                    <section id="skills" class="py-20 bg-slate-900/50 border-y border-slate-800/50">
+                    <section id="skills" class="py-20 bg-slate-50 border-y border-slate-200">
                         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <h2 class="text-3xl font-bold text-white mb-4 text-center">${t.skillsTitle}</h2>
-                            <p class="text-slate-400 text-center max-w-2xl mx-auto mb-12">${t.skillsIntro}</p>
+                            <h2 class="text-3xl font-bold text-slate-900 mb-4 text-center">${t.skillsTitle}</h2>
+                            <p class="text-slate-500 text-center max-w-2xl mx-auto mb-12">${t.skillsIntro}</p>
 
                             <div class="grid md:grid-cols-3 gap-8">
-                                <div class="bg-slate-900 border border-cyan-500/50 shadow-[0_0_20px_rgba(6,182,212,0.15)] rounded-xl p-6 hover:border-cyan-400 hover:shadow-[0_0_30px_rgba(6,182,212,0.3)] transition-all group relative overflow-hidden">
-                                    <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity">
-                                        <i data-lucide="shield" class="w-24 h-24 text-cyan-400"></i>
+                                <div class="bg-white border border-blue-200 shadow-lg shadow-blue-600/5 rounded-xl p-6 hover:border-blue-400 hover:shadow-xl hover:shadow-blue-600/10 transition-all group relative overflow-hidden">
+                                    <div class="absolute top-0 right-0 p-4 opacity-[0.06] group-hover:opacity-10 transition-opacity">
+                                        <i data-lucide="shield" class="w-24 h-24 text-blue-600"></i>
                                     </div>
-                                    <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative z-10">
-                                        <i data-lucide="shield" class="w-6 h-6 text-cyan-400"></i>
+                                    <div class="w-12 h-12 bg-blue-50 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform relative z-10">
+                                        <i data-lucide="shield" class="w-6 h-6 text-blue-600"></i>
                                     </div>
-                                    <h3 class="text-xl font-bold text-white mb-4 relative z-10">${t.secTitle}</h3>
+                                    <h3 class="text-xl font-bold text-slate-900 mb-4 relative z-10">${t.secTitle}</h3>
                                     <ul class="space-y-3 relative z-10">
-                                        ${t.secSkills.map(skill => `<li class="flex items-center text-slate-200 font-medium"><i data-lucide="chevron-right" class="w-4 h-4 text-cyan-500 mr-2"></i> ${skill}</li>`).join('')}
+                                        ${t.secSkills.map(skill => `<li class="flex items-center text-slate-700 font-medium"><i data-lucide="chevron-right" class="w-4 h-4 text-blue-500 mr-2 flex-shrink-0"></i> ${skill}</li>`).join('')}
                                     </ul>
                                 </div>
 
-                                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-teal-500/50 transition-colors group">
-                                    <div class="w-12 h-12 bg-teal-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                        <i data-lucide="activity" class="w-6 h-6 text-teal-400"></i>
+                                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:border-teal-300 hover:shadow-md transition-all group">
+                                    <div class="w-12 h-12 bg-teal-50 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="activity" class="w-6 h-6 text-teal-600"></i>
                                     </div>
-                                    <h3 class="text-xl font-bold text-white mb-4">${t.devTitle}</h3>
+                                    <h3 class="text-xl font-bold text-slate-900 mb-4">${t.devTitle}</h3>
                                     <ul class="space-y-3">
-                                        ${t.devSkills.map(skill => `<li class="flex items-center text-slate-300"><i data-lucide="chevron-right" class="w-4 h-4 text-teal-500 mr-2"></i> ${skill}</li>`).join('')}
+                                        ${t.devSkills.map(skill => `<li class="flex items-center text-slate-600"><i data-lucide="chevron-right" class="w-4 h-4 text-teal-500 mr-2 flex-shrink-0"></i> ${skill}</li>`).join('')}
                                     </ul>
                                 </div>
 
-                                <div class="bg-slate-900 border border-slate-800 rounded-xl p-6 hover:border-blue-500/50 transition-colors group">
-                                    <div class="w-12 h-12 bg-blue-500/10 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                                        <i data-lucide="scale" class="w-6 h-6 text-blue-400"></i>
+                                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:border-cyan-300 hover:shadow-md transition-all group">
+                                    <div class="w-12 h-12 bg-cyan-50 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                                        <i data-lucide="scale" class="w-6 h-6 text-cyan-700"></i>
                                     </div>
-                                    <h3 class="text-xl font-bold text-white mb-4">${t.bizTitle}</h3>
+                                    <h3 class="text-xl font-bold text-slate-900 mb-4">${t.bizTitle}</h3>
                                     <ul class="space-y-3">
-                                        ${t.bizSkills.map(skill => `<li class="flex items-center text-slate-300"><i data-lucide="chevron-right" class="w-4 h-4 text-blue-500 mr-2"></i> ${skill}</li>`).join('')}
+                                        ${t.bizSkills.map(skill => `<li class="flex items-center text-slate-600"><i data-lucide="chevron-right" class="w-4 h-4 text-cyan-600 mr-2 flex-shrink-0"></i> ${skill}</li>`).join('')}
                                     </ul>
                                 </div>
                             </div>
 
-                            <div class="mt-12 text-center">
-                                <h3 class="text-xl font-bold text-white mb-6">${t.langTitle}</h3>
-                                <div class="flex flex-wrap justify-center gap-4">
-                                    ${t.langs.map(l => `<span class="px-6 py-2 bg-slate-800 rounded-full border border-slate-700 text-white font-medium">${l.name} <span class="text-cyan-500 ml-2">${l.level}</span></span>`).join('')}
-                                </div>
-                            </div>
+                            <p class="mt-12 text-center text-sm text-slate-500 flex items-center justify-center gap-2">
+                                <i data-lucide="languages" class="w-4 h-4 text-blue-600"></i> ${t.langNote}
+                            </p>
                         </div>
                     </section>
 
-                    <section id="about" class="py-20">
+                    <section id="why" class="py-20">
                         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div class="grid md:grid-cols-2 gap-12 items-center">
-                                <div>
-                                    <h2 class="text-3xl font-bold text-white mb-6 flex items-center gap-2">
-                                        <i data-lucide="user" class="w-6 h-6 text-cyan-400"></i> ${t.aboutTitle}
-                                    </h2>
-                                    <p class="text-slate-300 leading-relaxed mb-6">${t.aboutP1}</p>
-                                    <p class="text-slate-300 leading-relaxed mb-6">${t.aboutP2}</p>
-                                    <div class="flex flex-wrap gap-2 mt-8">
-                                        ${t.hobbies.map(hobby => `<span class="px-3 py-1 bg-slate-800 rounded-full text-xs text-slate-300 border border-slate-700">${hobby}</span>`).join('')}
-                                    </div>
-                                </div>
-                                <div class="relative hidden md:block">
-                                    <div class="relative rounded-2xl overflow-hidden shadow-[0_0_30px_rgba(0,0,0,0.3)] border border-slate-700 group">
-                                        <div class="absolute inset-0 bg-cyan-900/20 mix-blend-overlay group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none"></div>
-
-                                        <img src="ron_ebken.jpg" alt="Ron Ebken" class="w-full h-auto object-cover aspect-[4/5] object-top group-hover:scale-105 transition-transform duration-700 ease-in-out" />
-
-                                        <div class="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-slate-900 to-transparent z-10 pointer-events-none"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="experience" class="py-20 bg-slate-900/50 border-y border-slate-800/50">
-                        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <h2 class="text-3xl font-bold text-white mb-4 flex items-center gap-2">
-                                <i data-lucide="briefcase" class="w-6 h-6 text-cyan-400"></i> ${t.expTitle}
+                            <h2 class="text-3xl font-bold text-slate-900 mb-4 text-center flex items-center justify-center gap-2">
+                                <i data-lucide="heart-handshake" class="w-6 h-6 text-blue-600"></i> ${t.whyTitle}
                             </h2>
-                            <p class="text-slate-400 mb-12 max-w-2xl">${t.expIntro}</p>
+                            <p class="text-slate-500 text-center max-w-2xl mx-auto mb-12 italic">"${t.whyQuote}"</p>
 
-                            <div class="relative border-l border-slate-700 ml-3 md:ml-4">
-
-                                <div class="mb-12 ml-8 relative group">
-                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-slate-900 rounded-full -left-12 ring-4 ring-slate-950 border border-cyan-500/30 group-hover:border-cyan-400 transition-colors">
-                                        <i data-lucide="line-chart" class="w-4 h-4 text-cyan-400"></i>
+                            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-blue-300 transition-all">
+                                    <span class="flex items-center justify-center w-11 h-11 rounded-full bg-blue-50 border border-blue-200 mb-4">
+                                        <i data-lucide="graduation-cap" class="w-5 h-5 text-blue-600"></i>
                                     </span>
-                                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                                        <h3 class="text-xl font-bold text-white">${t.jobs[0].title}</h3>
-                                        <span class="text-sm font-mono text-cyan-400 flex items-center gap-1">
-                                            <i data-lucide="calendar" class="w-4 h-4"></i> ${t.jobs[0].date}
-                                        </span>
-                                    </div>
-                                    <h4 class="text-lg text-slate-400 mb-4 font-medium">${t.jobs[0].company}</h4>
-                                    <p class="text-slate-300 leading-relaxed">${t.jobs[0].desc}</p>
+                                    <h3 class="font-bold text-slate-900 mb-1">${t.qualTitle}</h3>
+                                    <p class="text-sm text-slate-500">${t.qualDesc}</p>
                                 </div>
 
-                                <div class="mb-12 ml-8 relative group">
-                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-slate-900 rounded-full -left-12 ring-4 ring-slate-950 border border-slate-600 group-hover:border-cyan-400 transition-colors">
-                                        <i data-lucide="shield" class="w-4 h-4 text-slate-400 group-hover:text-cyan-400"></i>
+                                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-cyan-300 transition-all">
+                                    <span class="flex items-center justify-center w-11 h-11 rounded-full bg-cyan-50 border border-cyan-200 mb-4">
+                                        <i data-lucide="lock" class="w-5 h-5 text-cyan-700"></i>
                                     </span>
-                                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                                        <h3 class="text-xl font-bold text-white">${t.jobs[1].title}</h3>
-                                        <span class="text-sm font-mono text-slate-400 flex items-center gap-1">
-                                            <i data-lucide="calendar" class="w-4 h-4"></i> ${t.jobs[1].date}
-                                        </span>
-                                    </div>
-                                    <h4 class="text-lg text-slate-400 mb-4 font-medium">${t.jobs[1].company}</h4>
-                                    <p class="text-slate-300 leading-relaxed">${t.jobs[1].desc}</p>
+                                    <h3 class="font-bold text-slate-900 mb-1">${t.why1Title}</h3>
+                                    <p class="text-sm text-slate-500">${t.why1Desc}</p>
                                 </div>
 
-                                <div class="mb-12 ml-8 relative group">
-                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-slate-900 rounded-full -left-12 ring-4 ring-slate-950 border border-slate-600 group-hover:border-cyan-400 transition-colors">
-                                        <i data-lucide="code" class="w-4 h-4 text-slate-400 group-hover:text-cyan-400"></i>
+                                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-teal-300 transition-all">
+                                    <span class="flex items-center justify-center w-11 h-11 rounded-full bg-teal-50 border border-teal-200 mb-4">
+                                        <i data-lucide="server" class="w-5 h-5 text-teal-600"></i>
                                     </span>
-                                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                                        <h3 class="text-xl font-bold text-white">${t.jobs[2].title}</h3>
-                                        <span class="text-sm font-mono text-slate-400 flex items-center gap-1">
-                                            <i data-lucide="calendar" class="w-4 h-4"></i> ${t.jobs[2].date}
-                                        </span>
-                                    </div>
-                                    <h4 class="text-lg text-slate-400 mb-4 font-medium">${t.jobs[2].company}</h4>
-                                    <p class="text-slate-300 leading-relaxed">${t.jobs[2].desc}</p>
+                                    <h3 class="font-bold text-slate-900 mb-1">${t.why2Title}</h3>
+                                    <p class="text-sm text-slate-500">${t.why2Desc}</p>
                                 </div>
 
-                                <div class="ml-8 relative group">
-                                    <span class="absolute flex items-center justify-center w-8 h-8 bg-slate-900 rounded-full -left-12 ring-4 ring-slate-950 border border-slate-600 group-hover:border-cyan-400 transition-colors">
-                                        <i data-lucide="terminal" class="w-4 h-4 text-slate-400 group-hover:text-cyan-400"></i>
+                                <div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-indigo-300 transition-all">
+                                    <span class="flex items-center justify-center w-11 h-11 rounded-full bg-indigo-50 border border-indigo-200 mb-4">
+                                        <i data-lucide="calendar-clock" class="w-5 h-5 text-indigo-600"></i>
                                     </span>
-                                    <div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
-                                        <h3 class="text-xl font-bold text-white">${t.jobs[3].title}</h3>
-                                        <span class="text-sm font-mono text-slate-400 flex items-center gap-1">
-                                            <i data-lucide="calendar" class="w-4 h-4"></i> ${t.jobs[3].date}
-                                        </span>
-                                    </div>
-                                    <h4 class="text-lg text-slate-400 mb-4 font-medium">${t.jobs[3].company}</h4>
-                                    <p class="text-slate-300 leading-relaxed">${t.jobs[3].desc}</p>
+                                    <h3 class="font-bold text-slate-900 mb-1">${t.why3Title}</h3>
+                                    <p class="text-sm text-slate-500">${t.why3Desc}</p>
                                 </div>
-
-                            </div>
-                        </div>
-                    </section>
-
-                    <section id="education" class="py-20">
-                        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-                            <div class="grid md:grid-cols-2 gap-12">
-
-                                <div>
-                                    <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-2">
-                                        <i data-lucide="graduation-cap" class="w-6 h-6 text-cyan-400"></i> ${t.eduTitle}
-                                    </h2>
-                                    <div class="space-y-6">
-                                        <div class="bg-slate-900 border border-slate-800 p-6 rounded-xl">
-                                            <div class="text-sm text-cyan-400 mb-1">${t.edu1Date}</div>
-                                            <h3 class="text-lg font-bold text-white">${t.edu1Title}</h3>
-                                            <p class="text-slate-400">${t.edu1Org}</p>
-                                        </div>
-                                        <div class="bg-slate-900 border border-slate-800 p-6 rounded-xl">
-                                            <div class="text-sm text-slate-400 mb-1">${t.edu2Date}</div>
-                                            <h3 class="text-lg font-bold text-white">${t.edu2Title}</h3>
-                                            <p class="text-slate-400">${t.edu2Org}</p>
-                                        </div>
-
-                                        <div class="grid grid-cols-2 gap-4 mt-6">
-                                            <div class="bg-slate-800/50 border border-slate-700 p-4 rounded-xl text-center">
-                                                <div class="text-xs text-slate-400 mb-1">Apr 2025</div>
-                                                <div class="font-medium text-white text-sm">${t.cert1Title}</div>
-                                                <div class="text-xs text-cyan-400">Codecademy</div>
-                                            </div>
-                                            <div class="bg-slate-800/50 border border-slate-700 p-4 rounded-xl text-center">
-                                                <div class="text-xs text-slate-400 mb-1">Feb 2025</div>
-                                                <div class="font-medium text-white text-sm">${t.cert2Title}</div>
-                                                <div class="text-xs text-cyan-400">EF SET</div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <h2 class="text-2xl font-bold text-white mb-8 flex items-center gap-2">
-                                        <i data-lucide="heart-handshake" class="w-6 h-6 text-cyan-400"></i> ${t.whyTitle}
-                                    </h2>
-                                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 border border-slate-700 p-8 rounded-xl h-full flex flex-col justify-center">
-                                        <p class="text-slate-300 leading-relaxed mb-8 italic">
-                                            "${t.whyQuote}"
-                                        </p>
-
-                                        <div class="space-y-6">
-                                            <div class="flex items-start gap-4">
-                                                <span class="flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-full bg-cyan-500/15 border border-cyan-500/30">
-                                                    <i data-lucide="lock" class="w-4 h-4 text-cyan-400"></i>
-                                                </span>
-                                                <div>
-                                                    <h4 class="text-white font-medium">${t.why1Title}</h4>
-                                                    <p class="text-sm text-slate-400 mt-1">${t.why1Desc}</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-start gap-4">
-                                                <span class="flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-full bg-teal-500/15 border border-teal-500/30">
-                                                    <i data-lucide="server" class="w-4 h-4 text-teal-400"></i>
-                                                </span>
-                                                <div>
-                                                    <h4 class="text-white font-medium">${t.why2Title}</h4>
-                                                    <p class="text-sm text-slate-400 mt-1">${t.why2Desc}</p>
-                                                </div>
-                                            </div>
-                                            <div class="flex items-start gap-4">
-                                                <span class="flex-shrink-0 flex items-center justify-center w-9 h-9 rounded-full bg-blue-500/15 border border-blue-500/30">
-                                                    <i data-lucide="calendar-clock" class="w-4 h-4 text-blue-400"></i>
-                                                </span>
-                                                <div>
-                                                    <h4 class="text-white font-medium">${t.why3Title}</h4>
-                                                    <p class="text-sm text-slate-400 mt-1">${t.why3Desc}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-
                             </div>
                         </div>
                     </section>
                 </main>
 
-                <footer id="contact" class="bg-slate-950 border-t border-slate-900 py-12">
+                <footer id="contact" class="bg-slate-50 border-t border-slate-200 py-16">
                     <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-                        <h2 class="text-3xl font-bold text-white mb-8">${t.contactTitle}</h2>
+                        <h2 class="text-3xl font-bold text-slate-900 mb-8">${t.contactTitle}</h2>
                         <div class="flex flex-wrap justify-center gap-6 mb-12">
-                            <a href="mailto:info@itsec-nordwest.de" class="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors text-lg">
+                            <a href="mailto:info@itsec-nordwest.de" class="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition-colors text-lg">
                                 <i data-lucide="mail" class="w-5 h-5"></i> info@itsec-nordwest.de
                             </a>
-                            <a href="tel:+491735105665" class="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors text-lg">
+                            <a href="tel:+491735105665" class="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition-colors text-lg">
                                 <i data-lucide="phone" class="w-5 h-5"></i> +49 173 510 5665
                             </a>
-                            <a href="https://www.linkedin.com/in/ron-ebken-18772423b/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-slate-300 hover:text-cyan-400 transition-colors text-lg">
+                            <a href="https://www.linkedin.com/in/ron-ebken-18772423b/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2 text-slate-700 hover:text-blue-600 transition-colors text-lg">
                                 <i data-lucide="linkedin" class="w-5 h-5"></i> ${t.profileLi}
                             </a>
                         </div>
-                        <p class="text-slate-600 text-sm">
+                        <p class="text-slate-400 text-sm">
                             © ${new Date().getFullYear()} ITSEC NORDWEST — Ron Ebken. ${t.rights}
                         </p>
-                        <div class="mt-4 flex items-center justify-center gap-4 text-xs text-slate-600">
-                            <a href="impressum.html" class="hover:text-cyan-400 transition-colors">${t.footerImpressum}</a>
+                        <div class="mt-4 flex items-center justify-center gap-4 text-xs text-slate-400">
+                            <a href="impressum.html" class="hover:text-blue-600 transition-colors">${t.footerImpressum}</a>
                             <span>·</span>
-                            <a href="datenschutz.html" class="hover:text-cyan-400 transition-colors">${t.footerPrivacy}</a>
+                            <a href="datenschutz.html" class="hover:text-blue-600 transition-colors">${t.footerPrivacy}</a>
                         </div>
                     </div>
                 </footer>
